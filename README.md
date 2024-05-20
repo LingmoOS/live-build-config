@@ -1,3 +1,3 @@
-# live-build configuration for Kali ISO images
+# live-build configuration for Lingmo ISO images
 
-Have a look at [Live Build a Custom Kali ISO](https://www.kali.org/docs/development/live-build-a-custom-kali-iso/) for explanations on how to use this repository.
+Have a look at [Live Build a Custom Lingmo ISO](https://www.lingmo.org/docs/development/live-build-a-custom-lingmo-iso/) for explanations on how to use this repository.

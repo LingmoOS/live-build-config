@@ -5,10 +5,10 @@ set -e
 # Use return code for any command errors in part of a pipe
 set -o pipefail # Bashism
 
-# Kali's default values
-KALI_DIST="kali-rolling"
-KALI_VERSION=""
-KALI_VARIANT="default"
+# Lingmo's default values
+LINGMO_DIST="lingmo-rolling"
+LINGMO_VERSION=""
+LINGMO_VARIANT="default"
 IMAGE_TYPE="live"
 TARGET_DIR="$(dirname $0)/images"
 TARGET_SUBDIR=""
@@ -29,21 +29,21 @@ image_name() {
 }
 
 live_image_name() {
-	case "$KALI_ARCH" in
+	case "$LINGMO_ARCH" in
 		i386|amd64|arm64)
-			echo "live-image-$KALI_ARCH.hybrid.iso"
+			echo "live-image-$LINGMO_ARCH.hybrid.iso"
 		;;
 		armel|armhf)
-			echo "live-image-$KALI_ARCH.img"
+			echo "live-image-$LINGMO_ARCH.img"
 		;;
 	esac
 }
 
 installer_image_name() {
-	if [ "$KALI_VARIANT" = "netinst" ]; then
-		echo "simple-cdd/images/kali-$KALI_VERSION-$KALI_ARCH-NETINST-1.iso"
+	if [ "$LINGMO_VARIANT" = "netinst" ]; then
+		echo "simple-cdd/images/lingmo-$LINGMO_VERSION-$LINGMO_ARCH-NETINST-1.iso"
 	else
-		echo "simple-cdd/images/kali-$KALI_VERSION-$KALI_ARCH-BD-1.iso"
+		echo "simple-cdd/images/lingmo-$LINGMO_VERSION-$LINGMO_ARCH-BD-1.iso"
 	fi
 }
 
@@ -56,16 +56,16 @@ target_image_name() {
 		IMAGE_EXT="img"
 	fi
 	if [ "$IMAGE_TYPE" = "live" ]; then
-		if [ "$KALI_VARIANT" = "default" ]; then
-			echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}kali-linux-$KALI_VERSION-live-$KALI_ARCH.$IMAGE_EXT"
+		if [ "$LINGMO_VARIANT" = "default" ]; then
+			echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}lingmo-linux-$LINGMO_VERSION-live-$LINGMO_ARCH.$IMAGE_EXT"
 		else
-			echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}kali-linux-$KALI_VERSION-live-$KALI_VARIANT-$KALI_ARCH.$IMAGE_EXT"
+			echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}lingmo-linux-$LINGMO_VERSION-live-$LINGMO_VARIANT-$LINGMO_ARCH.$IMAGE_EXT"
 		fi
 	else
-		if [ "$KALI_VARIANT" = "default" ]; then
-			echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}kali-linux-$KALI_VERSION-installer-$KALI_ARCH.$IMAGE_EXT"
+		if [ "$LINGMO_VARIANT" = "default" ]; then
+			echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}lingmo-linux-$LINGMO_VERSION-installer-$LINGMO_ARCH.$IMAGE_EXT"
 		else
-			echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}kali-linux-$KALI_VERSION-installer-$KALI_VARIANT-$KALI_ARCH.$IMAGE_EXT"
+			echo "${TARGET_SUBDIR:+$TARGET_SUBDIR/}lingmo-linux-$LINGMO_VERSION-installer-$LINGMO_VARIANT-$LINGMO_ARCH.$IMAGE_EXT"
 		fi
 	fi
 }
@@ -77,8 +77,8 @@ target_build_log() {
 
 default_version() {
 	case "$1" in
-		kali-*)
-			echo "${1#kali-}"
+		lingmo-*)
+			echo "${1#lingmo-}"
 		;;
 		*)
 			echo "$1"
@@ -87,7 +87,7 @@ default_version() {
 }
 
 failure() {
-	echo "Build of $KALI_DIST/$KALI_VARIANT/$KALI_ARCH $IMAGE_TYPE image failed (see build.log for details)" >&2
+	echo "Build of $LINGMO_DIST/$LINGMO_VARIANT/$LINGMO_ARCH $IMAGE_TYPE image failed (see build.log for details)" >&2
 	echo "Log: $BUILD_LOG" >&2
 	exit 2
 }
@@ -136,7 +136,7 @@ print_help() {
 		echo "  --${x}"
 	done
 	echo
-	echo "More information: https://www.kali.org/docs/development/live-build-a-custom-kali-iso/"
+	echo "More information: https://www.lingmo.org/docs/development/live-build-a-custom-lingmo-iso/"
 	exit 0
 }
 
@@ -153,17 +153,17 @@ temp=$(getopt -o "$BUILD_OPTS_SHORT" -l "$BUILD_OPTS_LONG,get-image-path" -- "$@
 eval set -- "$temp"
 while true; do
 	case "$1" in
-		-d|--distribution) KALI_DIST="$2"; shift 2; ;;
+		-d|--distribution) LINGMO_DIST="$2"; shift 2; ;;
 		-p|--proposed-updates) OPT_pu="1"; shift 1; ;;
-		-a|--arch) KALI_ARCH="$2"; shift 2; ;;
+		-a|--arch) LINGMO_ARCH="$2"; shift 2; ;;
 		-v|--verbose) VERBOSE="1"; shift 1; ;;
 		-D|--debug) DEBUG="1"; shift 1; ;;
 		-s|--salt) shift; ;;
 		-h|--help) print_help; ;;
 		--installer) IMAGE_TYPE="installer"; shift 1 ;;
 		--live) IMAGE_TYPE="live"; shift 1 ;;
-		--variant) KALI_VARIANT="$2"; shift 2; ;;
-		--version) KALI_VERSION="$2"; shift 2; ;;
+		--variant) LINGMO_VARIANT="$2"; shift 2; ;;
+		--version) LINGMO_VERSION="$2"; shift 2; ;;
 		--subdir) TARGET_SUBDIR="$2"; shift 2; ;;
 		--get-image-path) ACTION="get-image-path"; shift 1; ;;
 		--clean) ACTION="clean"; shift 1; ;;
@@ -174,42 +174,42 @@ while true; do
 done
 
 # Set default values
-KALI_ARCH=${KALI_ARCH:-$HOST_ARCH}
-if [ "$KALI_ARCH" = "x64" ]; then
-	KALI_ARCH="amd64"
-elif [ "$KALI_ARCH" = "x86" ]; then
-	KALI_ARCH="i386"
+LINGMO_ARCH=${LINGMO_ARCH:-$HOST_ARCH}
+if [ "$LINGMO_ARCH" = "x64" ]; then
+	LINGMO_ARCH="amd64"
+elif [ "$LINGMO_ARCH" = "x86" ]; then
+	LINGMO_ARCH="i386"
 fi
-debug "KALI_ARCH: $KALI_ARCH"
+debug "LINGMO_ARCH: $LINGMO_ARCH"
 
-if [ -z "$KALI_VERSION" ]; then
-	KALI_VERSION="$(default_version $KALI_DIST)"
+if [ -z "$LINGMO_VERSION" ]; then
+	LINGMO_VERSION="$(default_version $LINGMO_DIST)"
 fi
-debug "KALI_VERSION: $KALI_VERSION"
+debug "LINGMO_VERSION: $LINGMO_VERSION"
 
 # Check parameters
 debug "HOST_ARCH: $HOST_ARCH"
-if [ "$HOST_ARCH" != "$KALI_ARCH" ] && [ "$IMAGE_TYPE" != "installer" ]; then
-	case "$HOST_ARCH/$KALI_ARCH" in
+if [ "$HOST_ARCH" != "$LINGMO_ARCH" ] && [ "$IMAGE_TYPE" != "installer" ]; then
+	case "$HOST_ARCH/$LINGMO_ARCH" in
 		amd64/i386|i386/amd64)
 		;;
 		*)
-			echo "Can't build $KALI_ARCH image on $HOST_ARCH system." >&2
+			echo "Can't build $LINGMO_ARCH image on $HOST_ARCH system." >&2
 			exit 1
 		;;
 	esac
 fi
 
 # Build parameters for lb config
-KALI_CONFIG_OPTS="--distribution $KALI_DIST -- --variant $KALI_VARIANT"
-CODENAME=$KALI_DIST # for simple-cdd/debian-cd
+LINGMO_CONFIG_OPTS="--distribution $LINGMO_DIST -- --variant $LINGMO_VARIANT"
+CODENAME=$LINGMO_DIST # for simple-cdd/debian-cd
 if [ -n "$OPT_pu" ]; then
-	KALI_CONFIG_OPTS="$KALI_CONFIG_OPTS --proposed-updates"
-	KALI_DIST="$KALI_DIST+pu"
+	LINGMO_CONFIG_OPTS="$LINGMO_CONFIG_OPTS --proposed-updates"
+	LINGMO_DIST="$LINGMO_DIST+pu"
 fi
-debug "KALI_CONFIG_OPTS: $KALI_CONFIG_OPTS"
+debug "LINGMO_CONFIG_OPTS: $LINGMO_CONFIG_OPTS"
 debug "CODENAME: $CODENAME"
-debug "KALI_DIST: $KALI_DIST"
+debug "LINGMO_DIST: $LINGMO_DIST"
 
 # Set sane PATH (cron seems to lack /sbin/ dirs)
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
@@ -226,13 +226,13 @@ fi
 debug "IMAGE_TYPE: $IMAGE_TYPE"
 case "$IMAGE_TYPE" in
 	live)
-		if [ ! -d "$(dirname $0)/kali-config/variant-$KALI_VARIANT" ]; then
-			echo "ERROR: Unknown variant of Kali live configuration: $KALI_VARIANT" >&2
+		if [ ! -d "$(dirname $0)/lingmo-config/variant-$LINGMO_VARIANT" ]; then
+			echo "ERROR: Unknown variant of Lingmo live configuration: $LINGMO_VARIANT" >&2
 		fi
 
 		ver_live_build=$(dpkg-query -f '${Version}' -W live-build)
-		if dpkg --compare-versions "$ver_live_build" lt "1:20230502+kali3"; then
-			echo "ERROR: You need live-build (>= 1:20230502+kali3), you have $ver_live_build" >&2
+		if dpkg --compare-versions "$ver_live_build" lt "1:20230502+lingmo3"; then
+			echo "ERROR: You need live-build (>= 1:20230502+lingmo3), you have $ver_live_build" >&2
 			exit 1
 		fi
 		debug "ver_live_build: $ver_live_build"
@@ -245,13 +245,13 @@ case "$IMAGE_TYPE" in
 		debug "ver_debootstrap: $ver_debootstrap"
 	;;
 	installer)
-		if [ ! -d "$(dirname $0)/kali-config/installer-$KALI_VARIANT" ]; then
-			echo "ERROR: Unknown variant of Kali installer configuration: $KALI_VARIANT" >&2
+		if [ ! -d "$(dirname $0)/lingmo-config/installer-$LINGMO_VARIANT" ]; then
+			echo "ERROR: Unknown variant of Lingmo installer configuration: $LINGMO_VARIANT" >&2
 		fi
 
 		ver_debian_cd=$(dpkg-query -f '${Version}' -W debian-cd)
-		if dpkg --compare-versions "$ver_debian_cd" lt 3.2.1+kali1; then
-			echo "ERROR: You need debian-cd (>= 3.2.1+kali1), you have $ver_debian_cd" >&2
+		if dpkg --compare-versions "$ver_debian_cd" lt 3.2.1+lingmo1; then
+			echo "ERROR: You need debian-cd (>= 3.2.1+lingmo1), you have $ver_debian_cd" >&2
 			exit 1
 		fi
 		debug "ver_debian_cd: $ver_debian_cd"
@@ -280,12 +280,12 @@ else
 fi
 debug "SUDO: $SUDO"
 
-IMAGE_NAME="$(image_name $KALI_ARCH)"
+IMAGE_NAME="$(image_name $LINGMO_ARCH)"
 debug "IMAGE_NAME: $IMAGE_NAME"
 
 debug "ACTION: $ACTION"
 if [ "$ACTION" = "get-image-path" ]; then
-	echo $(target_image_name $KALI_ARCH)
+	echo $(target_image_name $LINGMO_ARCH)
 	exit 0
 fi
 
@@ -305,7 +305,7 @@ set +e
 case "$IMAGE_TYPE" in
 	live)
 		debug "Stage 1/2 - Config"
-		run_and_log lb config -a $KALI_ARCH $KALI_CONFIG_OPTS "$@"
+		run_and_log lb config -a $LINGMO_ARCH $LINGMO_CONFIG_OPTS "$@"
 		[ $? -eq 0 ] || failure
 
 		debug "Stage 2/2 - Build"
@@ -317,27 +317,27 @@ case "$IMAGE_TYPE" in
 	installer)
 		# Override some debian-cd environment variables
 		export BASEDIR="$(pwd)/simple-cdd/debian-cd"
-		export ARCHES=$KALI_ARCH
-		export ARCH=$KALI_ARCH
-		export DEBVERSION=$KALI_VERSION
+		export ARCHES=$LINGMO_ARCH
+		export ARCH=$LINGMO_ARCH
+		export DEBVERSION=$LINGMO_VERSION
 		debug "BASEDIR: $BASEDIR"
 		debug "ARCHES: $ARCHES"
 		debug "ARCH: $ARCH"
 		debug "DEBVERSION: $DEBVERSION"
 
-		if [ "$KALI_VARIANT" = "netinst" ]; then
+		if [ "$LINGMO_VARIANT" = "netinst" ]; then
 			export DISKTYPE="NETINST"
-			profiles="kali"
-			auto_profiles="kali"
-		elif [ "$KALI_VARIANT" = "purple" ]; then
+			profiles="lingmo"
+			auto_profiles="lingmo"
+		elif [ "$LINGMO_VARIANT" = "purple" ]; then
 			export DISKTYPE="BD"
-			profiles="kali kali-purple offline"
-			auto_profiles="kali kali-purple offline"
+			profiles="lingmo lingmo-purple offline"
+			auto_profiles="lingmo lingmo-purple offline"
 			export KERNEL_PARAMS="debian-installer/theme=Clearlooks-Purple"
 		else    # plain installer
 			export DISKTYPE="BD"
-			profiles="kali offline"
-			auto_profiles="kali offline"
+			profiles="lingmo offline"
+			auto_profiles="lingmo offline"
 		fi
 		debug "DISKTYPE: $DISKTYPE"
 		debug "profiles: $profiles"
@@ -345,14 +345,14 @@ case "$IMAGE_TYPE" in
 		[ -v KERNEL_PARAMS ] && debug "KERNEL_PARAMS: $KERNEL_PARAMS"
 
 		if [ -e .mirror ]; then
-			kali_mirror=$(cat .mirror)
+			lingmo_mirror=$(cat .mirror)
 		else
-			kali_mirror=http://kali.download/kali/
+			lingmo_mirror=http://lingmo.download/lingmo/
 		fi
-		if ! echo "$kali_mirror" | grep -q '/$'; then
-			kali_mirror="$kali_mirror/"
+		if ! echo "$lingmo_mirror" | grep -q '/$'; then
+			lingmo_mirror="$lingmo_mirror/"
 		fi
-		debug "kali_mirror: $kali_mirror"
+		debug "lingmo_mirror: $lingmo_mirror"
 
 		debug "Stage 1/2 - File(s)"
 		# Setup custom debian-cd to make our changes
@@ -361,7 +361,7 @@ case "$IMAGE_TYPE" in
 
 		# Use the same grub theme as in the live images
 		# Until debian-cd is smart enough: http://bugs.debian.org/1003927
-		cp -f kali-config/common/bootloaders/grub-pc/grub-theme.in simple-cdd/debian-cd/data/$CODENAME/grub-theme.in
+		cp -f lingmo-config/common/bootloaders/grub-pc/grub-theme.in simple-cdd/debian-cd/data/$CODENAME/grub-theme.in
 
 		# Keep 686-pae udebs as we changed the default from 686
 		# to 686-pae in the debian-installer images
@@ -369,20 +369,20 @@ case "$IMAGE_TYPE" in
 			simple-cdd/debian-cd/data/$CODENAME/exclude-udebs-i386
 		[ $? -eq 0 ] || failure
 
-		# Configure the kali profile with the packages we want
-		grep -v '^#' kali-config/installer-$KALI_VARIANT/packages \
-			> simple-cdd/profiles/kali.downloads
+		# Configure the lingmo profile with the packages we want
+		grep -v '^#' lingmo-config/installer-$LINGMO_VARIANT/packages \
+			> simple-cdd/profiles/lingmo.downloads
 		[ $? -eq 0 ] || failure
 
 		# Tasksel is required in the mirror for debian-cd
-		echo tasksel >> simple-cdd/profiles/kali.downloads
+		echo tasksel >> simple-cdd/profiles/lingmo.downloads
 		[ $? -eq 0 ] || failure
 
 		# Grub is the only supported bootloader on arm64
 		# so ensure it's on the iso for arm64.
-		if [ "$KALI_ARCH" = "arm64" ]; then
+		if [ "$LINGMO_ARCH" = "arm64" ]; then
 			debug "arm64 GRUB"
-			echo "grub-efi-arm64" >> simple-cdd/profiles/kali.downloads
+			echo "grub-efi-arm64" >> simple-cdd/profiles/lingmo.downloads
 			[ $? -eq 0 ] || failure
 		fi
 
@@ -395,7 +395,7 @@ case "$IMAGE_TYPE" in
 			--force-root \
 			--conf simple-cdd.conf \
 			--dist $CODENAME \
-			--debian-mirror $kali_mirror \
+			--debian-mirror $lingmo_mirror \
 			--profiles "$profiles" \
 			--auto-profiles "$auto_profiles"
 		res=$?
@@ -410,7 +410,7 @@ esac
 set -e
 
 debug "Moving files"
-run_and_log mv -f $IMAGE_NAME $TARGET_DIR/$(target_image_name $KALI_ARCH)
-run_and_log mv -f "$BUILD_LOG" $TARGET_DIR/$(target_build_log $KALI_ARCH)
+run_and_log mv -f $IMAGE_NAME $TARGET_DIR/$(target_image_name $LINGMO_ARCH)
+run_and_log mv -f "$BUILD_LOG" $TARGET_DIR/$(target_build_log $LINGMO_ARCH)
 
-run_and_log echo -e "\n***\nGENERATED KALI IMAGE: $TARGET_DIR/$(target_image_name $KALI_ARCH)\n***"
+run_and_log echo -e "\n***\nGENERATED LINGMO IMAGE: $TARGET_DIR/$(target_image_name $LINGMO_ARCH)\n***"

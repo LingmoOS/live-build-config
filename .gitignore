@@ -29,7 +29,7 @@ wget-log*
 
 # Overwritten due to build.sh
 simple-cdd/debian-cd/*
-simple-cdd/profiles/kali.downloads
+simple-cdd/profiles/lingmo.downloads
 
 # Miscellaneous
 .lock

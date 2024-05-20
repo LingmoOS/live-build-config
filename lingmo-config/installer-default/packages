@@ -1,0 +1,23 @@
+# Full installer image
+# It should contain everything offered in tasksel
+# during initial installation so all lingmo-linux-* except:
+# - lingmo-linux-everything
+
+# Metapackages
+# You can customize the set of Lingmo metapackages (groups of tools) available
+# in the installer ISO.
+# For the complete list see: https://tools.lingmo.org/lingmo-metapackages
+lingmo-linux-firmware
+lingmo-linux-core
+lingmo-tools-top10
+lingmo-linux-default
+
+# NOTE: We would like to provide lingmo-linux-large in our installer images
+# but we end up with ISO images that are too big for our CDN. So disable
+# it for now.
+# lingmo-linux-large
+
+# Graphical desktops
+lingmo-desktop-xfce
+lingmo-desktop-gnome
+lingmo-desktop-kde

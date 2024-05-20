@@ -1,0 +1,17 @@
+# Installer image with lingmo-linux-everything
+
+# Metapackages
+# You can customize the set of Lingmo metapackages (groups of tools) available
+# in the installer ISO.
+# For the complete list see: https://tools.lingmo.org/lingmo-metapackages
+lingmo-linux-firmware
+lingmo-linux-core
+lingmo-tools-top10
+lingmo-linux-default
+lingmo-linux-large
+lingmo-linux-everything
+
+# Graphical desktops
+lingmo-desktop-xfce
+lingmo-desktop-gnome
+lingmo-desktop-kde

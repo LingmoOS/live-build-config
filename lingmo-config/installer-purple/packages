@@ -1,0 +1,21 @@
+# Installer for Lingmo Purple
+
+# Metapackages
+# You can customize the set of Lingmo metapackages (groups of tools) available
+# in the installer ISO.
+# For the complete list see: https://tools.lingmo.org/lingmo-metapackages
+lingmo-linux-firmware
+lingmo-system-gui
+lingmo-themes-purple  # temporary, until we do it a better way
+
+# Tools
+lingmo-tools-detect
+lingmo-tools-identify
+lingmo-tools-protect
+lingmo-tools-recover
+lingmo-tools-respond
+
+# Graphical desktops
+lingmo-desktop-xfce
+lingmo-desktop-gnome
+lingmo-desktop-kde
