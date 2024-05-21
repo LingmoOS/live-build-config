@@ -8,7 +8,7 @@ set -o pipefail # Bashism
 # Lingmo's default values
 LINGMO_DIST="trixie"
 LINGMO_VERSION=""
-LINGMO_VARIANT="everything"
+LINGMO_VARIANT="default"
 IMAGE_TYPE="live"
 TARGET_DIR="$(dirname $0)/images"
 TARGET_SUBDIR=""
@@ -391,7 +391,7 @@ installer)
 	if [ -e .mirror ]; then
 		lingmo_mirror=$(cat .mirror)
 	else
-		lingmo_mirror=http://lingmo.download/lingmo/
+		lingmo_mirror=http://debian-archive.trafficmanager.net/debian
 	fi
 	if ! echo "$lingmo_mirror" | grep -q '/$'; then
 		lingmo_mirror="$lingmo_mirror/"
