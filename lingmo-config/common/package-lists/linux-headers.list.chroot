@@ -2,6 +2,9 @@
 ## Add linux headers to build DKMS packages even after the kernel
 ## used to build the live images is gone from lingmo-rolling.
 ##
+
+linux-image-generic
+
 #if ARCHITECTURES i386
 linux-headers-686-pae
 #endif
