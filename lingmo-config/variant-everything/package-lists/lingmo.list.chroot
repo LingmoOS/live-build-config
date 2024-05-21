@@ -46,6 +46,7 @@ zsh-syntax-highlighting
 
 # Graphical desktops
 lingmo-workspace-base
+sddm
 
 # Lingmo applications
 #<package>

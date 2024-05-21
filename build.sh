@@ -13,7 +13,7 @@ IMAGE_TYPE="live"
 TARGET_DIR="$(dirname $0)/images"
 TARGET_SUBDIR=""
 SUDO="sudo"
-VERBOSE="true"
+VERBOSE="false"
 DEBUG=""
 HOST_ARCH=$(dpkg --print-architecture)
 

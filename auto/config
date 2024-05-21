@@ -131,6 +131,7 @@ lb config noauto \
 	--archive-areas "main contrib non-free non-free-firmware" \
 	--debootstrap-options "--keyring=/usr/share/keyrings/debian-archive-keyring.gpg" \
 	--keyring-packages "debian-archive-keyring" \
+	--apt-recommends false \
 	--updates false \
 	--backports false \
 	--source false \
