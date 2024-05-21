@@ -8,7 +8,7 @@ set -o pipefail # Bashism
 # Lingmo's default values
 LINGMO_DIST="trixie"
 LINGMO_VERSION=""
-LINGMO_VARIANT="live"
+LINGMO_VARIANT="everything"
 IMAGE_TYPE="live"
 TARGET_DIR="$(dirname $0)/images"
 TARGET_SUBDIR=""

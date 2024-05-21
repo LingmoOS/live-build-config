@@ -1,7 +1,7 @@
 # Live image
 # You always want these:
-lingmo-linux-core
-lingmo-desktop-live
+# lingmo-linux-core
+# lingmo-desktop-live
 
 # Metapackages
 # You can customize the set of Lingmo metapackages (groups of tools) to install
@@ -26,7 +26,6 @@ firmware-zd1211
 ## linux-core
 ### system-core
 ftp
-kali-defaults
 openssh-client
 openssh-server
 parted
