@@ -2,6 +2,6 @@
 
 # Do not register it in inetd so that its status can be controlled
 # individually
-atftpd atftpd/use_inetd boolean false
+# atftpd atftpd/use_inetd boolean false
 # Install wireshark setuid
-wireshark-common wireshark-common/install-setuid boolean true
+# wireshark-common wireshark-common/install-setuid boolean true

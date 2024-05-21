@@ -3,7 +3,6 @@
 ##
 #if ARCHITECTURES amd64 i386
 hyperv-daemons
-virtualbox-guest-x11
 #endif
 #if ARCHITECTURES amd64 i386 arm64
 open-vm-tools-desktop

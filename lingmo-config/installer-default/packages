@@ -6,11 +6,40 @@
 # Metapackages
 # You can customize the set of Lingmo metapackages (groups of tools) available
 # in the installer ISO.
-# For the complete list see: https://tools.lingmo.org/lingmo-metapackages
-lingmo-linux-firmware
-lingmo-linux-core
-lingmo-tools-top10
-lingmo-linux-default
+# For the complete list see: https://tools.kali.org/kali-metapackages
+
+## linux-firmware
+bluez-firmware
+firmware-amd-graphics
+firmware-ath9k-htc
+firmware-atheros
+firmware-brcm80211
+firmware-intel-sound
+firmware-iwlwifi
+firmware-libertas
+firmware-linux
+firmware-misc-nonfree
+firmware-realtek
+firmware-sof-signed
+firmware-ti-connectivity
+firmware-zd1211
+
+## linux-core
+### system-core
+ftp
+kali-defaults
+openssh-client
+openssh-server
+parted
+sudo
+tasksel
+tmux
+tzdata-legacy
+vim
+zsh
+zsh-autosuggestions
+zsh-syntax-highlighting
+
 
 # NOTE: We would like to provide lingmo-linux-large in our installer images
 # but we end up with ISO images that are too big for our CDN. So disable
@@ -18,6 +47,6 @@ lingmo-linux-default
 # lingmo-linux-large
 
 # Graphical desktops
-lingmo-desktop-xfce
-lingmo-desktop-gnome
-lingmo-desktop-kde
+# lingmo-desktop-xfce
+# lingmo-desktop-gnome
+# lingmo-desktop-kde

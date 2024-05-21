@@ -1,95 +1,78 @@
-#/* Live Image (UEFI boot) */
-title-text: ""
-desktop-image: "../splash.png"
-desktop-color: "#041838"
-terminal-left: "0"
-terminal-top: "0"
-terminal-width: "100%"
-terminal-height: "100%"
-terminal-border: "0"
+# GRUB2 gfxmenu Linux theme
+# BigSur theme
+# Designed for 1920x1080 resolution
 
-#+ vbox {
-#  top = 80
-#  left = 65%
-#  width = 30%
-#  height = 100
-#ifdef MENU1
-#  + hbox {
-#    left = 0
-#    + label {text = " >" font = "Sans 10" color = "white" align = "left"}
-#    + label {text = MENU1 font = "Sans 10" color = "#c0c0c0" align = "left"}
-#  }
-#endif
-#ifdef MENU2
-#  + hbox {
-#    left = 0
-#    + label {text = "   >" font = "Sans 10" color = "white" align = "left"}
-#    + label {text = MENU2 font = "Sans 10" color = "#c0c0c0" align = "left"}
-#  }
-#endif
-#ifdef MENU3
-#  + hbox {
-#    left = 0
-#    + label {text = "     >" font = "Sans 10" color = "white" align = "left"}
-#    + label {text = MENU3 font = "Sans 10" color = "#c0c0c0" align = "left"}
-#  }
-#endif
-#ifdef MENU4
-#  + hbox {
-#    left = 0
-#    + label {text = "       >" font = "Sans 10" color = "white" align = "left"}
-#    + label {text = MENU4 font = "Sans 10" color = "#c0c0c0" align = "left"}
-#  }
-#endif
-#}
+desktop-image: "background.png"
+
+title-text: ""
+message-font: "DejaVu Sans Regular 14"
+message-color: "#eff0f1"
+terminal-font: "Terminus Regular 14"
+terminal-box: "terminal_*.png"
 
 + label {
-  top = 31%
-  left = 0
-  width = 100%
-  height = 35
-  align = "center"
-  color = "#ffffff"
-  font = "Sans 16"
-  text = "Lingmo Linux live menu (UEFI mode)"
+    text = "Lingmo OS GRUB"
+    font = "DejaVu Sans Regular 48"
+    color = "#eff0f1"
+    left = 50%-202
+    top = 15%
+    height = 20
+    width = 400
+    align = "center"
+}
+
++ label {
+    text = "boot"
+    font = "DejaVu Sans Regular 16"
+    color = "#eff0f1"
+    top = 30%-30
+    left = 50%-80
+    align = "center"
+    width = 160
+    height = 40
 }
 
 + boot_menu {
-  left = 14%
-  width = 73%
-  top = 39%
-  height = 42%
-  item_color = "#f3f3f3"
-  selected_item_color = "#ffffff"
-  item_height = 36
-  item_padding = 0
-  item_spacing = 4
-  icon_width = 0
-  icon_height = 0
-  selected_item_pixmap_style = "select_*.png"
+    left = 20%
+    width = 60%
+    top = 30%
+    height = 40%
+    icon_width = 32
+    icon_height = 32
+    item_height = 30
+    item_padding = 1
+    item_icon_space = 5
+    item_spacing = 35
+    menu_pixmap_style = "boot_menu_*.png"
+    item_font = "DejaVu Sans Regular 16"
+    item_color = "#757575"
+    item_pixmap_style = "item_*.png"
+    selected_item_color = "#ffffff"
+    selected_item_pixmap_style = "select_*.png"
+    scrollingmo-sys-buildar = true
+    scrollingmo-sys-buildar_width = 21
+    scrollingmo-sys-buildar_thumb = "slider_*.png"
 }
 
-+ vbox {
-  top = 100%-60
-  left = 14%
-  + hbox {
-    top = 0
-    left = 20%
-    + label {text = "Enter: " font = "Sans 10" color = "white" align = "left"}
-    + label {text = "Select             " font = "Sans 10" color = "#c0c0c0" align = "left"}
-#ifdef MENU1
-#    + label {text = "           " font = "Sans 10" color = "white" align = "left"}
-#    + label {text = "Esc:   " font = "Sans 10" color = "white" align = "left"}
-#    + label {text = "Back up one level  " font = "Sans 10" color = "#c0c0c0" align = "left"}
-#endif
-  }
-  + hbox {
-    top = 0
-    left = 20%
-    + label {text = "E:     " font = "Sans 10" color = "white" align = "left"}
-    + label {text = "Edit Selection     " font = "Sans 10" color = "#c0c0c0" align = "left"}
-    + label {text = "           " font = "Sans 10" color = "white" align = "left"}
-    + label {text = "C:     " font = "Sans 10" color = "white" align = "left"}
-    + label {text = "GRUB Command line" font = "Sans 10" color = "#c0c0c0" align = "left"}
-  }
++ progress_bar {
+    left = 50%-300
+    top = 95%-30
+    height = 20
+    width = 600
+    color = "#757575"
+    font = "Terminus Regular 16"
+    align = "center"
+    id = "__timeout__"
+    text = "@TIMEOUT_NOTIFICATION_LONG@"
+    text_color = "#efefef"
+    bar_style = "*"
+    highlight_style = "*"
+}
+
++ image {
+  top = 100%-50
+  left = 50%-240
+  width = 480
+  height = 42
+  file = "info.png"
 }

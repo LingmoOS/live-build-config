@@ -6,4 +6,18 @@
 
 # We still put lingmo-linux-firmware because we want firmware to be
 # in the ISO for use by the installer
-lingmo-linux-firmware
+## linux-firmware
+bluez-firmware
+firmware-amd-graphics
+firmware-ath9k-htc
+firmware-atheros
+firmware-brcm80211
+firmware-intel-sound
+firmware-iwlwifi
+firmware-libertas
+firmware-linux
+firmware-misc-nonfree
+firmware-realtek
+firmware-sof-signed
+firmware-ti-connectivity
+firmware-zd1211
