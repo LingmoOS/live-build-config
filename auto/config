@@ -145,8 +145,8 @@ lb config noauto \
 	--iso-volume "Lingmo Live" \
 	--linux-packages linux-image \
 	--memtest memtest86+ \
-	--bootappend-live "boot=live components quiet splash noeject" \
-	--bootappend-live-failsafe "boot=live components noeject memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal" \
+	--bootappend-live "boot=live components username=lingmolive quiet splash noeject" \
+	--bootappend-live-failsafe "boot=live components username=lingmolive noeject memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal" \
 	--bootappend-install "net.ifnames=0" \
 	--debootstrap-options "--include=apt-transport-https,ca-certificates,openssl" \
 	--security false \
