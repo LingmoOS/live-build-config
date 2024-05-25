@@ -47,6 +47,15 @@ zsh-syntax-highlighting
 # Graphical desktops
 lingmo-workspace-base
 sddm
+xorg
+kwin-x11
+calamares
+
+# Live configs
+live-boot
+lingmo-grub-config
+lingmo-live
+
 
 # Lingmo applications
 #<package>

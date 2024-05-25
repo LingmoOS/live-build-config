@@ -1,11 +1,28 @@
 #!/bin/sh
 
+addGroup () {
+    GROUP_NAME="$1"
+
+    if getent group "$GROUP_NAME" > /dev/null 2>&1; then
+        echo "Group '$GROUP_NAME' already exists."
+    else
+        sudo groupadd "$GROUP_NAME"
+        echo "Group '$GROUP_NAME' has been added."
+    fi
+}
+
+
 # 检查用户 lingmolive 是否存在
-if id "lingmolive" &>/dev/null; then
+if id "lingmolive" > /dev/null 2>&1; then
     echo "用户 lingmolive 已存在"
+    addGroup autologin
+    addGroup nopasswdlogin
+    usermod -G autologin,nopasswdlogin lingmolive
 else
     echo "用户 lingmolive 不存在，创建用户"
-    useradd lingmolive
+    addGroup autologin
+    addGroup nopasswdlogin
+    useradd -mG autologin,nopasswdlogin -s /bin/bash lingmolive
 fi
 
 # 更新 lingmolive 用户的密码
