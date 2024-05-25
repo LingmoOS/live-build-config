@@ -6,6 +6,10 @@ cat << EOF > /etc/sddm.conf
 [Theme]
 Current=lingmo
 
+[Autologin]
+User=lingmolive
+Session=lingmo-session
+
 [Users]
 # Default $PATH for logged in users 
 DefaultPath=/bin:/usr/bin
