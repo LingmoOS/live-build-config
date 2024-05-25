@@ -55,7 +55,25 @@ calamares
 live-boot
 lingmo-grub-config
 lingmo-live
+gparted
+dirmngr
+software-properties-common
+codium
+kwin-x11
+kwin-dev
+kscreen
+libkf5windowsystem-dev
+libxcb1-dev
+libxcb-shape0-dev
+libkf5networkmanagerqt-dev
+libkf5kio-dev
+sound-theme-freedesktop
+libx11-dev
+vim
+plymouth
+
 
 
 # Lingmo applications
 #<package>
+

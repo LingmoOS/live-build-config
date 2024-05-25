@@ -131,16 +131,18 @@ lb config noauto \
 	--archive-areas "main contrib non-free non-free-firmware" \
 	--debootstrap-options "--keyring=/usr/share/keyrings/debian-archive-keyring.gpg" \
 	--keyring-packages "debian-archive-keyring" \
-	--apt-recommends false \
+	--apt-recommends true \
 	--updates false \
 	--backports false \
 	--source false \
 	--firmware-binary true \
 	--firmware-chroot true \
+	--uefi-secure-boot enable \
+    --initramfs live-boot \
 	--mirror-bootstrap "$lingmo_mirror" \
 	--mirror-debian-installer "$lingmo_mirror" \
 	--mirror-binary "$public_lingmo_mirror" \
-	--iso-application "Lingmo Linux" \
+	--iso-application "linux-image linux-headers" \
 	--iso-publisher "Lingmo" \
 	--iso-volume "Lingmo Live" \
 	--linux-packages linux-image \
