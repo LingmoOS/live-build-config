@@ -38,5 +38,8 @@ apt remove plasma-desktop -y
 apt remove zutty -y
 apt remove breeze eog -y
 apt autoremove -y
-apt install lingmo-settings -y
 apt update
+
+# Make sure lingmo is installed
+apt install --reinstall lingmo-workspace-base
+

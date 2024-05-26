@@ -45,7 +45,9 @@ zsh-syntax-highlighting
 # lingmo-linux-large
 
 # Graphical desktops
+kde-plasma-desktop
 lingmo-workspace-base
+lingmo-plymouth
 sddm
 xorg
 kwin-x11
@@ -58,7 +60,6 @@ lingmo-live
 gparted
 dirmngr
 software-properties-common
-codium
 kwin-x11
 kwin-dev
 kscreen
@@ -70,8 +71,8 @@ libkf5kio-dev
 sound-theme-freedesktop
 libx11-dev
 vim
-plymouth
 
+plymouth
 
 
 # Lingmo applications

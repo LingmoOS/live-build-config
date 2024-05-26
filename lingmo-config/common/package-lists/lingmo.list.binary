@@ -29,6 +29,6 @@ grub-efi-arm64
 linux-image-generic
 
 # Live configs
-live-boot
-lingmo-grub-config
-lingmo-live
+# live-boot
+# lingmo-grub-config
+# lingmo-live

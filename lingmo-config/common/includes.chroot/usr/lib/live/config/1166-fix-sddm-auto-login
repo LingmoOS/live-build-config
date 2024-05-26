@@ -7,7 +7,7 @@ cat << EOF > /etc/sddm.conf
 Current=lingmo
 
 [Autologin]
-User=lingmolive
+User=lingmo
 Session=lingmo-session
 
 [Users]
