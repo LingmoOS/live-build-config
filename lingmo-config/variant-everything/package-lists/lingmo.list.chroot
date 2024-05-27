@@ -52,7 +52,6 @@ lingmo-plymouth
 sddm
 xorg
 kwin-x11
-calamares
 
 # Live configs
 live-boot

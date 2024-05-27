@@ -35,6 +35,7 @@ done
 # Remove unwanted packages 
 apt remove systemsettings -y
 apt remove plasma-desktop -y
+apt remove network-manager-gnome konsole kde-baseapps -y
 apt remove zutty -y
 apt remove breeze eog -y
 apt autoremove -y
