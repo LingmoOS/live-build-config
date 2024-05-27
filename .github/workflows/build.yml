@@ -31,7 +31,7 @@ jobs:
           options: -v ${{ github.workspace }}:/work
           run: |
             cd /work
-            apt update; apt install fakeroot xorriso squashfs-tools debootstrap mtools -y
+            apt update; apt install git fakeroot xorriso squashfs-tools debootstrap mtools -y
             git config --global --add safe.directory /work
 
             bash ./build.sh
