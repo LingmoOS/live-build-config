@@ -9,20 +9,21 @@
 # For the complete list see: https://tools.kali.org/kali-metapackages
 
 ## linux-firmware
-# bluez-firmware
-# firmware-amd-graphics
-# firmware-ath9k-htc
-# firmware-atheros
-# firmware-brcm80211
-# firmware-intel-sound
-# firmware-iwlwifi
-# firmware-libertas
-# firmware-linux
-# firmware-misc-nonfree
-# firmware-realtek
-# firmware-sof-signed
-# firmware-ti-connectivity
-# firmware-zd1211
+bluez-firmware
+firmware-amd-graphics
+firmware-ath9k-htc
+firmware-atheros
+firmware-brcm80211
+firmware-intel-sound
+firmware-iwlwifi
+firmware-libertas
+firmware-linux
+firmware-misc-nonfree
+firmware-realtek
+firmware-sof-signed
+firmware-ti-connectivity
+firmware-zd1211
+broadcom-sta-dkms
 
 ## linux-core
 ### system-core
