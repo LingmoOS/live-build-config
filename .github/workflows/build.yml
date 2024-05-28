@@ -1,0 +1,44 @@
+name: Build
+
+permissions: write-all
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+jobs:
+  debian:
+    name: Building iso disk image
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - name: Maximize build space
+        uses: easimon/maximize-build-space@master
+        with:
+          root-reserve-mb: 4096
+          swap-size-mb: 512
+          remove-dotnet: 'true'
+          remove-android: 'true'
+
+      - uses: actions/checkout@v3
+
+      - name: Set up Debian container
+        uses: addnab/docker-run-action@v3
+        with:
+          image: docker.io/library/debian:trixie-slim
+          options: --privileged -v ${{ github.workspace }}:/work
+          run: |
+            cd /work
+            apt update; apt install git fakeroot live-build debootstrap debian-cd simple-cdd xorriso squashfs-tools debootstrap mtools -y
+            git config --global --add safe.directory /work
+            bash ./build.sh
+            
+      - name: Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact
+          path: ${{ github.workspace }}/images/*
+          compression-level: 9 # maximum compression
+          if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
