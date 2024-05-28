@@ -1,0 +1,3 @@
+#!/bin/sh
+
+bash /usr/bin/add-calamares-desktop-icon
