@@ -153,5 +153,6 @@ lb config noauto \
 	--debootstrap-options "--include=apt-transport-https,ca-certificates,openssl" \
 	--security false \
 	--win32-loader false \
+	--debian-installer false \
 	$lb_opts \
 	"$@"
