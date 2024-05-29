@@ -76,5 +76,7 @@ plymouth
 
 
 # Lingmo applications
-#<package>
-
+lingmo-screenshot
+lingmo-ocr
+lingmo-videoplayer
+firefox-esr
