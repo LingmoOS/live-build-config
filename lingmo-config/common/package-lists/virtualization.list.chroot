@@ -8,5 +8,4 @@ hyperv-daemons
 open-vm-tools-desktop
 #endif
 qemu-guest-agent
-spice-vdagent
 xrdp
