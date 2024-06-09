@@ -36,11 +36,25 @@ jobs:
             apt update; apt install git fakeroot live-build debootstrap debian-cd simple-cdd xorriso squashfs-tools debootstrap mtools -y
             git config --global --add safe.directory /work
             bash ./build.sh
+
+      - name: Compress image
+        run: |
+          mkdir artifacts
+          tar -czvf ./artifacts/lingmo_daily_$(date +%Y%m%d_%H%M%S).tar.gz images
+
+      - name: 📂 Sync files
+            uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+            with:
+              server: ${{ secrets.FTP_ADDR }}
+              username: ${{ secrets.FTP_USERNAME }}
+              password: ${{ secrets.FTP_PASSWORD }}
+              local-dir: ./artifacts
+              server-dir: DailyBuild
             
       - name: Artifact
         uses: actions/upload-artifact@v4
         with:
           name: artifact
-          path: ${{ github.workspace }}/images/*
+          path: ${{ github.workspace }}/artifacts/*
           compression-level: 9 # maximum compression
           if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
