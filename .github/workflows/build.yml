@@ -48,8 +48,8 @@ jobs:
           server: ${{ secrets.FTP_ADDR }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./artifacts
-          server-dir: DailyBuild
+          local-dir: ./artifacts/
+          server-dir: DailyBuild/
             
       - name: Artifact
         uses: actions/upload-artifact@v4
