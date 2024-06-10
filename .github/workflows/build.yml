@@ -45,7 +45,7 @@ jobs:
       - name: Upload to Server
         run: |
           sudo apt install lftp -y
-          lftp -u user,pass ftp://ftp.example.com <<EOF
+          lftp -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ftp://${{ secrets.FTP_ADDR }} <<EOF
           set ftp:resume-yes
           set ftp:timeout 10
           set net:max-retries 10
