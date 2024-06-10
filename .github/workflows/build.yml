@@ -42,14 +42,18 @@ jobs:
           mkdir artifacts
           tar -czvf ./artifacts/lingmo_daily_$(date +%Y%m%d_%H%M%S).tar.gz images
 
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_ADDR }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./artifacts/
-          timeout: 3600000
+      - name: Upload to Server
+        run: |
+          sudo apt install lftp -y
+          lftp -u user,pass ftp://ftp.example.com <<EOF
+          set ftp:resume-yes
+          set ftp:timeout 10
+          set net:max-retries 10
+          set net:reconnect-interval-base 5
+          mirror -R ./artifacts/ /
+          exit
+          EOF
+
             
       - name: Artifact
         uses: actions/upload-artifact@v4
