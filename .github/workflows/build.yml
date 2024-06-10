@@ -41,19 +41,6 @@ jobs:
         run: |
           mkdir artifacts
           tar -czvf ./artifacts/lingmo_daily_$(date +%Y%m%d_%H%M%S).tar.gz images
-
-      - name: Upload to Server
-        run: |
-          sudo apt install lftp -y
-          lftp -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ftp://${{ secrets.FTP_ADDR }} <<EOF
-          set ftp:resume-yes
-          set ftp:timeout 10
-          set net:max-retries 10
-          set net:reconnect-interval-base 5
-          mirror -R ./artifacts/ /
-          exit
-          EOF
-
             
       - name: Artifact
         uses: actions/upload-artifact@v4
