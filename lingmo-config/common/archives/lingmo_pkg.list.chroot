@@ -1,1 +1,1 @@
-deb [trusted=yes] https://packages-lingmo.simplelinux.cn.eu.org/polaris polaris main contrib non-free
+deb [trusted=yes] https://packages-lingmo.simplelinux.cn.eu.org/lingmo-archive/rolling/polaris polaris main contrib non-free
