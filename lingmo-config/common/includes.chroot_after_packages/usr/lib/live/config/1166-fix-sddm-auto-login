@@ -1,7 +1,15 @@
 #!/bin/sh
 
-cat << EOF > /etc/pam.d/sddm
-auth        sufficient  pam_succeed_if.so user ingroup nopasswdlogin
+rm /etc/sddm.conf
+
+cat << EOF > /etc/sddm.conf
+[Theme]
+Current=lingmo
+
+[Autologin]
+User=lingmo
+Session=lingmo-session
+
 EOF
 
-sudo pam-auth-update --force --package
+sudo systemctl restart sddm
