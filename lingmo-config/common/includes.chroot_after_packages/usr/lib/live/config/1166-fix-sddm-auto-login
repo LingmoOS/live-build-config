@@ -11,5 +11,3 @@ User=lingmo
 Session=lingmo-session
 
 EOF
-
-sudo systemctl restart sddm
