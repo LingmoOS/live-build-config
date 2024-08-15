@@ -6,7 +6,7 @@ set -e
 set -o pipefail # Bashism
 
 # Lingmo's default values
-LINGMO_DIST="trixie"
+LINGMO_DIST="hydrogen"
 LINGMO_VERSION=""
 LINGMO_VARIANT="default"
 IMAGE_TYPE="live"
