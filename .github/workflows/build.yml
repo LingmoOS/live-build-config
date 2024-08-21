@@ -29,7 +29,7 @@ jobs:
       - name: Set up Debian container
         uses: addnab/docker-run-action@v3
         with:
-          image: docker.io/library/debian:trixie-slim
+          image: ghcr.io/lingmoos-testing/lingmo:hydrogen
           options: --privileged -v ${{ github.workspace }}:/work
           run: |
             cd /work
