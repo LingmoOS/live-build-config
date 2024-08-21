@@ -129,7 +129,7 @@ lb config noauto \
 	--distribution "$dist" \
 	--debian-installer-distribution "$dist" \
 	--archive-areas "main contrib non-free non-free-firmware" \
-	--debootstrap-options "--keyring=/etc/apt/trusted.gpg.d/lingmo-archive-keyring.gpg.asc --include=apt-transport-https,ca-certificates,openssl" \
+	--debootstrap-options "--keyring=/usr/share/keyrings/lingmo-archive-keyring.gpg --include=apt-transport-https,ca-certificates,openssl" \
 	--apt-recommends true \
 	--updates false \
 	--backports false \
