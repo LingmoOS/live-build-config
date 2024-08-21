@@ -129,8 +129,7 @@ lb config noauto \
 	--distribution "$dist" \
 	--debian-installer-distribution "$dist" \
 	--archive-areas "main contrib non-free non-free-firmware" \
-	--debootstrap-options "--keyring=/etc/apt/trusted.gpg.d/lingmo-archive-keyring.gpg.asc" \
-	--keyring-packages "debian-archive-keyring" \
+	--debootstrap-options "--no-check-gpg --keyring=/etc/apt/trusted.gpg.d/lingmo-archive-keyring.gpg.asc --include=apt-transport-https,ca-certificates,openssl" \
 	--apt-recommends true \
 	--updates false \
 	--backports false \
@@ -150,7 +149,6 @@ lb config noauto \
 	--bootappend-live "boot=live components quiet splash noeject" \
 	--bootappend-live-failsafe "boot=live components noeject memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal" \
 	--bootappend-install "net.ifnames=0" \
-	--debootstrap-options "--include=apt-transport-https,ca-certificates,openssl" \
 	--security false \
 	--win32-loader false \
 	$lb_opts \
