@@ -13,6 +13,3 @@ grub-efi-amd64
 # Note: There is no grub-efi package on arm64
 grub-efi-arm64
 #endif
-
-# Legacy Support 
-grub-pc
