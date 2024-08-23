@@ -8,12 +8,12 @@ set -o pipefail # Bashism
 if [ -e .mirror ]; then
     lingmo_mirror=$(cat .mirror)
 else
-    lingmo_mirror=https://packages.lingmo.org/packages
+    lingmo_mirror=http://debian-archive.trafficmanager.net/debian
 fi
 
 ### DO NOT EDIT THE REST OF THIS FILE ###
 
-public_lingmo_mirror=https://packages.lingmo.org/packages
+public_lingmo_mirror=http://debian-archive.trafficmanager.net/debian
 
 # Detect target architecture and filter args
 temp=""
