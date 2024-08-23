@@ -80,6 +80,7 @@ case "$arch" in
     ;;
     i386)
 	# lb_opts="$lb_opts --debian-installer live --linux-flavours 686-pae"
+	lb_opts="$lb_opts --linux-flavours 686-pae"
     ;;
     arm64)
 	lb_opts="$lb_opts --bootloaders grub-efi --uefi-secure-boot disable"

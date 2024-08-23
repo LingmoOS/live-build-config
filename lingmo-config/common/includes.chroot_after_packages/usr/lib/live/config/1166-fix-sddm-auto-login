@@ -8,6 +8,6 @@ Current=lingmo
 
 [Autologin]
 User=lingmo
-Session=lingmo-session
+Session=lingmo-xsession
 
 EOF
