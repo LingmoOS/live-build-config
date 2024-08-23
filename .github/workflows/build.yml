@@ -34,7 +34,6 @@ jobs:
           run: |
             cd /work
             apt update; apt install git fakeroot live-build debootstrap debian-cd simple-cdd xorriso squashfs-tools debootstrap mtools -y
-            cp -v  /usr/share/debootstrap/scripts/sid /usr/share/debootstrap/scripts/hydrogen
             git config --global --add safe.directory /work
             bash ./build.sh
 
