@@ -76,10 +76,10 @@ fi
 # Define options that vary across architectures
 case "$arch" in
     amd64)
-	# lb_opts="$lb_opts --debian-installer live"
+	lb_opts="$lb_opts --debian-installer live"
     ;;
     i386)
-	# lb_opts="$lb_opts --debian-installer live --linux-flavours 686-pae"
+	lb_opts="$lb_opts --debian-installer live --linux-flavours 686-pae"
     ;;
     arm64)
 	lb_opts="$lb_opts --bootloaders grub-efi --uefi-secure-boot disable"
@@ -129,7 +129,7 @@ lb config noauto \
 	--distribution "$dist" \
 	--debian-installer-distribution "$dist" \
 	--archive-areas "main contrib non-free non-free-firmware" \
-	--debootstrap-options "--keyring=/etc/apt/trusted.gpg.d/lingmo-archive-keyring.gpg.asc" \
+	--debootstrap-options "--no-check-gpg --keyring=/usr/share/keyrings/debian-archive-keyring.gpg" \
 	--keyring-packages "debian-archive-keyring" \
 	--apt-recommends true \
 	--updates false \
