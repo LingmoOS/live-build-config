@@ -12,7 +12,10 @@ on:
   workflow_dispatch:
 jobs:
   debian:
-    name: Building iso disk image
+    strategy:
+        matrix:
+          arch: ['amd64', 'arm64']
+    name: Build ${{ matrix.arch }} iso
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
@@ -35,7 +38,8 @@ jobs:
             cd /work
             apt update; apt install git fakeroot live-build debootstrap debian-cd simple-cdd xorriso squashfs-tools debootstrap mtools -y
             git config --global --add safe.directory /work
-            bash ./build.sh
+            export LINGMO_ARCH=${{ matrix.arch }}
+            bash -i ./build.sh
 
       - name: Compress image
         run: |
@@ -45,7 +49,7 @@ jobs:
       - name: Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: artifact
+          name: ${{ matrix.arch }} artifact
           path: ${{ github.workspace }}/artifacts/*
           compression-level: 9 # maximum compression
           if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
