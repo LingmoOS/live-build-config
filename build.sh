@@ -238,10 +238,8 @@ if [ "$HOST_ARCH" != "$LINGMO_ARCH" ] && [ "$IMAGE_TYPE" != "installer" ]; then
 	case "$HOST_ARCH/$LINGMO_ARCH" in
 	amd64/i386 | i386/amd64) ;;
 	*)
-		# echo "Can't build $LINGMO_ARCH image on $HOST_ARCH system." >&2
-		# exit 1
-		# Using qemu to build 
-		sudo apt install -y qemu-user-binfmt
+		echo "Can't build $LINGMO_ARCH image on $HOST_ARCH system." >&2
+		exit 1
 		;;
 	esac
 fi
