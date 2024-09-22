@@ -43,17 +43,18 @@ jobs:
             bash -i ./build.sh
             
       - name: Set up arm64 Debian container
-        uses: pguyot/arm-runner-action@v2
+        uses: uraimo/run-on-arch-action@v2
         if: ${{ matrix.arch == 'arm64' }}
         with:
-          base_image: dietpi:rpi_armv8_bookworm
-          image_additional_mb: 2048
-          bind_mount_repository: true
-          use_systemd_nspawn: true
-          commands: |
-            cd /live-build-config
+          arch: ${{ matrix.arch }}
+          distro: "bookworm"
+          # Mount the artifacts directory as /artifacts in the container
+          dockerRunArgs: |
+            --privileged -v ${{ github.workspace }}:/work
+          run: |
+            cd /work
             apt update; apt install sudo git fakeroot live-build debootstrap debian-cd simple-cdd xorriso squashfs-tools debootstrap mtools -y
-            git config --global --add safe.directory /live-build-config
+            git config --global --add safe.directory /work
             export LINGMO_ARCH=${{ matrix.arch }}
             bash -i ./build.sh
             
