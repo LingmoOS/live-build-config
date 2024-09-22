@@ -42,12 +42,14 @@ jobs:
             export LINGMO_ARCH=${{ matrix.arch }}
             bash -i ./build.sh
             
-      - uses: pguyot/arm-runner-action@v2
+      - name: Set up arm64 Debian container
+        uses: pguyot/arm-runner-action@v2
         if: ${{ matrix.arch == 'arm64' }}
         with:
-          base_image: raspi_4_bookworm:20231109
+          base_image: dietpi:rpi_armv8_bookworm
           image_additional_mb: 2048
           bind_mount_repository: true
+          use_systemd_nspawn: true
           commands: |
             cd /live-build-config
             apt update; apt install sudo git fakeroot live-build debootstrap debian-cd simple-cdd xorriso squashfs-tools debootstrap mtools -y
