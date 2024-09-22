@@ -35,7 +35,6 @@ parted
 sudo
 tasksel
 tmux
-tzdata-legacy
 vim
 zsh
 zsh-autosuggestions
