@@ -41,6 +41,3 @@ apt remove breeze eog -y
 apt autoremove -y
 apt update
 
-# Make sure lingmo is installed
-apt install --reinstall lingmo-workspace-base
-

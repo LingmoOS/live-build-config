@@ -1,1 +1,1 @@
-deb [trusted=yes] https://packages-lingmo.simplelinux.cn.eu.org/lingmo-archive/rolling/hydrogen hydrogen main
+deb [trusted=yes] https://download.opensuse.org/repositories/home:/elysia:/LingmoOS/Debian_12/ /
