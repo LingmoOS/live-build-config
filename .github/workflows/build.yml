@@ -46,7 +46,7 @@ jobs:
         uses: uraimo/run-on-arch-action@v2
         if: ${{ matrix.arch == 'arm64' }}
         with:
-          arch: ${{ matrix.arch }}
+          arch: "aarch64"
           distro: "bookworm"
           # Mount the artifacts directory as /artifacts in the container
           dockerRunArgs: |
