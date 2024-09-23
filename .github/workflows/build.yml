@@ -8,7 +8,7 @@ on:
   pull_request:
     branches: [ "master" ]
   schedule:
-    - cron: "59 15 * * *"
+    - cron: "0 0 * * *"
   workflow_dispatch:
 jobs:
   debian:
@@ -53,7 +53,9 @@ jobs:
             --privileged -v ${{ github.workspace }}:/work
           run: |
             cd /work
-            apt update; apt install sudo git fakeroot live-build debootstrap debian-cd simple-cdd xorriso squashfs-tools debootstrap mtools -y
+            dpkg --add-architecture amd64
+            apt update
+            apt install sudo git fakeroot live-build debootstrap debian-cd simple-cdd xorriso libc6:amd64 squashfs-tools:amd64 debootstrap mtools -y
             git config --global --add safe.directory /work
             export LINGMO_ARCH=${{ matrix.arch }}
             bash -i ./build.sh
