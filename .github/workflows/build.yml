@@ -55,7 +55,7 @@ jobs:
             cd /work
             dpkg --add-architecture amd64
             apt update
-            apt install sudo git fakeroot live-build debootstrap debian-cd simple-cdd xorriso libc6:amd64 squashfs-tools:amd64 apt:amd64 debootstrap mtools -y
+            apt install sudo git fakeroot live-build debootstrap debian-cd simple-cdd xorriso libc6:amd64 squashfs-tools:amd64 debootstrap mtools -y
             git config --global --add safe.directory /work
             export LINGMO_ARCH=${{ matrix.arch }}
             bash -i ./build.sh
