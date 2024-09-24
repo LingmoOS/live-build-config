@@ -8,7 +8,7 @@ on:
   pull_request:
     branches: [ "master" ]
   schedule:
-    - cron: "59 15 * * *"
+    - cron: "0 0 * * *"
   workflow_dispatch:
 jobs:
   debian:
@@ -27,7 +27,7 @@ jobs:
           remove-dotnet: 'true'
           remove-android: 'true'
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up amd64 Debian container
         uses: addnab/docker-run-action@v3
@@ -58,15 +58,10 @@ jobs:
             export LINGMO_ARCH=${{ matrix.arch }}
             bash -i ./build.sh
             
-      - name: Compress image
-        run: |
-          mkdir artifacts
-          tar -czvf ./artifacts/lingmo_daily_$(date +%Y%m%d_%H%M%S).tar.gz images
-            
       - name: Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.arch }} artifact
-          path: ${{ github.workspace }}/artifacts/*
-          compression-level: 9 # maximum compression
+          name: ${{ matrix.arch }}
+          path: ${{ github.workspace }}/images/*.iso
+          compression-level: 0
           if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
