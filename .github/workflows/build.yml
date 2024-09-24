@@ -62,6 +62,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.arch }}
-          path: ${{ github.workspace }}/images/*
+          path: ${{ github.workspace }}/images/*.iso
           compression-level: 0
           if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
