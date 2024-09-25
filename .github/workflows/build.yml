@@ -53,7 +53,10 @@ jobs:
             --privileged -v ${{ github.workspace }}:/work
           run: |
             cd /work
-            apt update; apt install sudo git fakeroot live-build debootstrap debian-cd simple-cdd xorriso squashfs-tools debootstrap mtools -y
+            dpkg --add-architecture amd64
+            apt update
+            apt install --force-yes libc6:amd64 dpkg:amd64
+            apt install sudo git fakeroot live-build debootstrap debian-cd simple-cdd xorriso squashfs-tools debootstrap mtools -y
             git config --global --add safe.directory /work
             export LINGMO_ARCH=${{ matrix.arch }}
             bash -i ./build.sh
