@@ -57,7 +57,10 @@ jobs:
             git config --global --add safe.directory /work
             export LINGMO_ARCH=${{ matrix.arch }}
             bash -i ./build.sh
-            
+
+      - name: Calculate sha256sum
+        run: sha256sum images/*.iso
+
       - name: Artifact
         uses: actions/upload-artifact@v4
         with:
