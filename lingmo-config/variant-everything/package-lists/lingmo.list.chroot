@@ -78,3 +78,6 @@ plymouth
 
 # Lingmo applications
 firefox-esr
+
+# Input Methods
+fcitx5-chinese-addons

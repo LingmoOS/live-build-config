@@ -1,1 +1,1 @@
-deb [trusted=yes] https://download.opensuse.org/repositories/home:/elysia:/LingmoOS/Debian_Testing/ /
+deb https://raw.githubusercontent.com/LingmoOS/lingmo-nightly-build/refs/heads/main nightly experimental
