@@ -133,6 +133,7 @@ lb config noauto \
 	--debootstrap-options "--keyring=/usr/share/keyrings/debian-archive-keyring.gpg" \
 	--keyring-packages "debian-archive-keyring" \
 	--apt-recommends true \
+	--apt-options "-o DPkg::Options::=\"--force-confnew\" -y" \
 	--updates false \
 	--backports false \
 	--source false \
