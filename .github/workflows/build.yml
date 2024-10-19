@@ -40,6 +40,7 @@ jobs:
             apt update; apt install sudo git fakeroot live-build debootstrap debian-cd simple-cdd xorriso squashfs-tools debootstrap mtools -y
             git config --global --add safe.directory /work
             export LINGMO_ARCH=${{ matrix.arch }}
+            export DEBIAN_FRONTEND=noninteractive
             bash -i ./build.sh
             
       - name: Set up arm64 Debian container
@@ -56,6 +57,7 @@ jobs:
             apt update; apt install sudo git fakeroot live-build debootstrap debian-cd simple-cdd xorriso squashfs-tools debootstrap mtools -y
             git config --global --add safe.directory /work
             export LINGMO_ARCH=${{ matrix.arch }}
+            export DEBIAN_FRONTEND=noninteractive
             bash -i ./build.sh
             
       - name: Artifact
