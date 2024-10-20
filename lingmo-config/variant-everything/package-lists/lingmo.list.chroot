@@ -79,5 +79,8 @@ plymouth
 # Lingmo applications
 firefox-esr
 
+# From our friend GXDE
+gxde-deb-installer
+
 # Input Methods
 fcitx5-chinese-addons
