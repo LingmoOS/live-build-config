@@ -17,7 +17,7 @@ firmware-iwlwifi
 firmware-libertas
 firmware-linux
 firmware-misc-nonfree
-firmware-realtek
+# firmware-realtek
 firmware-sof-signed
 firmware-ti-connectivity
 firmware-zd1211
