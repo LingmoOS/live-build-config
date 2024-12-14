@@ -31,6 +31,11 @@ do
     apt-mark hold $pkg
 done
 
+# Assure desktop is installed
+apt install lingmo-workspace-base -y
+
+# Mark our desktop environment on hold so that it is not upgraded in the live system
+apt-mark hold lingmo-workspace-base
 
 # Remove unwanted packages 
 apt remove systemsettings -y
