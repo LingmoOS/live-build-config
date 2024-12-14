@@ -34,8 +34,11 @@ done
 # Assure desktop is installed
 apt install lingmo-workspace-base -y
 
-# Mark our desktop environment on hold so that it is not upgraded in the live system
-apt-mark hold lingmo-workspace-base
+# Mark lingmo DE as manually installed
+for pkg in $(dpkg-query -W -f'${db:Status-Status} ${binary:Package}\n' 'lingmo-*'| sed -ne 's/^installed //p')
+do
+    apt-mark manual $pkg
+done
 
 # Remove unwanted packages 
 apt remove systemsettings -y
