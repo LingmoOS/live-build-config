@@ -4,9 +4,9 @@ permissions: write-all
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "debian-12" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master", "debian-12" ]
   schedule:
     - cron: "59 18 * * *"
   workflow_dispatch:
