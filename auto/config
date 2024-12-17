@@ -8,17 +8,17 @@ set -o pipefail # Bashism
 if [ -e .mirror ]; then
     lingmo_mirror=$(cat .mirror)
 else
-    lingmo_mirror=http://ftp.debian.org/debian
+    lingmo_mirror=http://mirrors.bfsu.edu.cn/debian
 fi
 
 ### DO NOT EDIT THE REST OF THIS FILE ###
 
-public_lingmo_mirror=http://ftp.debian.org/debian
+public_lingmo_mirror=http://mirrors.bfsu.edu.cn/debian
 
 # Detect target architecture and filter args
 temp=""
 arch=$(dpkg --print-architecture)
-dist="trixie"
+dist="bookworm"
 lb_opts=""
 while [ $# -gt 0 ]; do
    	arg="$1"
