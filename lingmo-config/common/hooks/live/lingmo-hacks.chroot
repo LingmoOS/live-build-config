@@ -35,7 +35,7 @@ done
 apt install lingmo-workspace-base -y
 
 # Mark lingmo DE as manually installed
-for pkg in $(dpkg-query -W -f'${db:Status-Status} ${binary:Package}\n' 'lingmo-*'| sed -ne 's/^installed //p')
+for pkg in $(dpkg-query -W -f'${db:Status-Status} ${binary:Package}\n' 'lingmo*'| sed -ne 's/^installed //p')
 do
     apt-mark manual $pkg
 done
