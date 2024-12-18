@@ -70,6 +70,7 @@ plymouth
 
 # Lingmo applications
 firefox-esr
+lingmo-screenshot
 
 # From our friend GXDE
 # gxde-deb-installer
