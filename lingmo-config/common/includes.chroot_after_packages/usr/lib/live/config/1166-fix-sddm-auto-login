@@ -1,13 +1,13 @@
 #!/bin/sh
 
-rm /etc/sddm.conf
+# rm /etc/sddm.conf
 
-cat << EOF > /etc/sddm.conf
-[Theme]
-Current=lingmo
+# cat << EOF > /etc/sddm.conf
+# [Theme]
+# Current=lingmo
 
-[Autologin]
-User=lingmo
-Session=lingmo-xsession
+# [Autologin]
+# User=lingmo
+# Session=lingmo-xsession
 
-EOF
+# EOF
