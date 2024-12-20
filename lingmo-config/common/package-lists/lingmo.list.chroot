@@ -3,6 +3,7 @@ eatmydata
 
 # ensure some packages installed by base-installer/post-base-installer.d/*
 # hooks are available
+sudo
 locales
 pciutils
 usbutils
