@@ -28,24 +28,24 @@ fi
 # the live system
 for pkg in $(dpkg-query -W -f'${db:Status-Status} ${binary:Package}\n' 'linux-image-*' 'linux-headers-*' 'linux-kbuild-*' | sed -ne 's/^installed //p')
 do
-    apt-mark hold $pkg
+    apt-mark hold $pkg | true
 done
 
 # Assure desktop is installed
-apt install lingmo-workspace-base -y
+apt install lingmo-workspace-base -y | true
 
 # Mark lingmo DE as manually installed
 for pkg in $(dpkg-query -W -f'${db:Status-Status} ${binary:Package}\n' 'lingmo*'| sed -ne 's/^installed //p')
 do
-    apt-mark manual $pkg
+    apt-mark manual $pkg | true
 done
 
 # Remove unwanted packages 
-apt remove systemsettings -y
-apt remove plasma-desktop -y
-apt remove network-manager-gnome konsole kde-baseapps -y
-apt remove zutty -y
-apt remove breeze eog -y
-apt autoremove -y
-apt update
+apt remove systemsettings -y | true
+apt remove plasma-desktop -y | true
+apt remove network-manager-gnome konsole kde-baseapps -y | true
+apt remove zutty -y | true
+apt remove breeze eog -y | true
+apt autoremove -y | true
+apt update | true
 
