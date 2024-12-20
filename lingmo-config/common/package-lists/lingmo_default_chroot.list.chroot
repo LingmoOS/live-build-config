@@ -51,5 +51,8 @@ xfsprogs
 # Squashfs tools
 squashfs-tools
 
+# rsync tools
+rsync 
+
 # Disk Encryption
 cryptsetup
