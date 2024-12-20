@@ -35,3 +35,21 @@ live-config
 lingmo-grub-config
 lingmo-live
 
+# Filesystem tools
+dosfstools
+e2fsprogs
+ntfs-3g
+exfatprogs
+exfat-fuse
+xfsprogs
+btrfs-progs
+reiserfsprogs
+f2fs-tools
+jfsutils
+xfsprogs
+
+# Squashfs tools
+squashfs-tools
+
+# Disk Encryption
+cryptsetup
