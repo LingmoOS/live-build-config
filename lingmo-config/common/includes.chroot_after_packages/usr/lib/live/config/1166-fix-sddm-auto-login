@@ -1,13 +1,19 @@
 #!/bin/sh
 
-# rm /etc/sddm.conf
+rm /etc/sddm.conf
 
-# cat << EOF > /etc/sddm.conf
-# [Theme]
-# Current=lingmo
+cat << EOF > /etc/sddm.conf
+[Theme]
+Current=lingmo
 
-# [Autologin]
-# User=lingmo
-# Session=lingmo-xsession
+[Users]
+# Default $PATH for logged in users
+# Don't change this, See issue in 
+# https://github.com/orgs/LingmoOS/discussions/25#discussioncomment-11029445
+DefaultPath=/usr/bin:/bin
 
-# EOF
+[Autologin]
+User=lingmo
+Session=lingmo-xsession
+
+EOF

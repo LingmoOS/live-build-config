@@ -31,6 +31,7 @@ linux-image-generic
 
 # Live configs
 live-boot
+live-config
 lingmo-grub-config
 lingmo-live
 
