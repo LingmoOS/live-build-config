@@ -76,3 +76,6 @@ lingmo-screenshot
 
 # Input Methods
 fcitx5-chinese-addons
+
+# CJK Fonts
+fonts-noto-cjk
