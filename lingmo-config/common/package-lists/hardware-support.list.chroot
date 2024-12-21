@@ -39,3 +39,6 @@ firmware-ti-connectivity
 firmware-zd1211
 broadcom-sta-dkms
 #endif
+
+# wifi
+wireless-tools
