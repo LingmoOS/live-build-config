@@ -57,11 +57,16 @@ rsync
 # Disk Encryption
 cryptsetup
 
+# bluetooth
 bluez
 pulseaudio-module-bluetooth
 pulseaudio
 
+# WLAN
 hostapd
 wpagui
 wpasupplicant
 dbus
+
+# Package management
+packagekit

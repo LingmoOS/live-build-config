@@ -50,6 +50,7 @@ plymouth
 
 # Lingmo applications
 firefox-esr
+firefox-esr-l10n-zh-cn
 lingmo-screenshot
 
 # From our friend GXDE
