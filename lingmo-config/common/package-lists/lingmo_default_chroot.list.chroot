@@ -56,3 +56,9 @@ rsync
 
 # Disk Encryption
 cryptsetup
+
+bluez
+pulseaudio-module-bluetooth
+pulseaudio
+
+network-manager-gnome
