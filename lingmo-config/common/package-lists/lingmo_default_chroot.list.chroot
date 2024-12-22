@@ -61,4 +61,7 @@ bluez
 pulseaudio-module-bluetooth
 pulseaudio
 
-network-manager-gnome
+hostapd
+wpagui
+wpasupplicant
+dbus
