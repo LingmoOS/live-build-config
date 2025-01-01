@@ -48,11 +48,9 @@ bluez
 pulseaudio-module-bluetooth
 pulseaudio
 
-# WLAN
-hostapd
-wpagui
-wpasupplicant
-dbus
+# Networking
+network-manager
+network-manager-applet
 
 # Package management
 packagekit
