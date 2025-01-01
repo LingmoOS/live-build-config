@@ -33,8 +33,6 @@ reiserfsprogs
 f2fs-tools
 jfsutils
 xfsprogs
-
-# Squashfs tools
 squashfs-tools
 
 # rsync tools
