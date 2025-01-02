@@ -54,3 +54,6 @@ dbus
 
 # Package management
 packagekit
+
+# OpenSSH
+openssh-server
