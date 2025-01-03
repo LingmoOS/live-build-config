@@ -37,7 +37,7 @@ jobs:
           options: --privileged -v ${{ github.workspace }}:/work
           run: |
             cd /work
-            apt update; apt install sudo git fakeroot live-build debootstrap debian-cd simple-cdd xorriso squashfs-tools debootstrap mtools jq curl -y
+            apt update; apt install sudo git fakeroot live-build debootstrap debian-cd simple-cdd xorriso squashfs-tools debootstrap mtools curl jq -y
             git config --global --add safe.directory /work
             export LINGMO_ARCH=${{ matrix.arch }}
             export DEBIAN_FRONTEND=noninteractive
@@ -54,7 +54,7 @@ jobs:
             --privileged -v ${{ github.workspace }}:/work
           run: |
             cd /work
-            apt update; apt install sudo git fakeroot live-build debootstrap debian-cd simple-cdd xorriso squashfs-tools debootstrap mtools jq curl -y
+            apt update; apt install sudo git fakeroot live-build debootstrap debian-cd simple-cdd xorriso squashfs-tools debootstrap mtools curl jq -y
             git config --global --add safe.directory /work
             export LINGMO_ARCH=${{ matrix.arch }}
             export DEBIAN_FRONTEND=noninteractive
