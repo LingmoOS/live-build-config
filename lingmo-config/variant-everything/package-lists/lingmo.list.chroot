@@ -7,6 +7,9 @@
 # You can customize the set of Lingmo metapackages (groups of tools) to install
 # For the complete list see: https://tools.lingmo.org/lingmo-metapackages
 
+# Core Packages
+lingmo-base-files
+
 ## linux-core
 ### system-core
 ftp
@@ -57,6 +60,7 @@ lingmo-screenshot
 # gxde-deb-installer
 
 # Input Methods
+fcitx5
 fcitx5-chinese-addons
 
 # CJK Fonts
