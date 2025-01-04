@@ -1,5 +1,9 @@
 # Various applications
 
+# App Store
+packagekit-tools 
+plasma-discover
+
 # Office
 libreoffice
 libreoffice-l10n-zh-cn
