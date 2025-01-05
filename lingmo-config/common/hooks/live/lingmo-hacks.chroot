@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Handle systems where /lib is not merged in /usr/lib
 if [ ! -h /lib ]; then
@@ -47,10 +47,13 @@ done
 # apt update | true
 
 # Install OnlyOffice
-apt update
-curl -o onlyoffice.deb https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
-apt install -y --no-install-recommends ./onlyoffice.deb
-rm -rfv ./onlyoffice.deb
+get_arch=$(arch)
+if [[ $get_arch =~ "x86_64" ]];then
+    apt update
+    curl -o onlyoffice.deb https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
+    apt install -y --no-install-recommends ./onlyoffice.deb
+    rm -rfv ./onlyoffice.deb
+fi
 
 # Fixing os-release
 bash -c "cd /etc && rm -rf os-release && ln -s ../usr/lib/os-release os-release"
