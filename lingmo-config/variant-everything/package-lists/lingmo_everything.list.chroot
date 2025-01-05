@@ -5,8 +5,9 @@ packagekit-tools
 plasma-discover
 
 # Office
-libreoffice
-libreoffice-l10n-zh-cn
+# libreoffice
+# libreoffice-l10n-zh-cn
+# Use OnlyOffice now
 
 # Video
 vlc

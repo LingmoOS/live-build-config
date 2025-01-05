@@ -46,3 +46,8 @@ done
 # apt autoremove -y | true
 # apt update | true
 
+# Install OnlyOffice
+apt update
+curl -o onlyoffice.deb https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
+apt install -y --no-install-recommends ./onlyoffice.deb
+rm -rfv ./onlyoffice.deb
