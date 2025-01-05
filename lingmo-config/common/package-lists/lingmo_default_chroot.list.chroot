@@ -10,7 +10,11 @@ usbutils
 eject
 tasksel
 
+# GRUB for Legacy BIOS
 grub-pc
+
+# For GRUB for EFI
+efibootmgr
 
 # Linux image
 linux-image-generic
