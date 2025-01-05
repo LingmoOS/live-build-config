@@ -10,8 +10,12 @@ usbutils
 eject
 tasksel
 
-# GRUB for Legacy BIOS
+#if ARCHITECTURES i386
 grub-pc
+#endif
+#if ARCHITECTURES amd64
+grub-pc
+#endif
 
 # For GRUB for EFI
 efibootmgr
