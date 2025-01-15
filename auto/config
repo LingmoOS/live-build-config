@@ -148,8 +148,8 @@ lb config noauto \
 	--keyring-packages "debian-archive-keyring" \
 	--apt-recommends false \
 	--apt-options "-o DPkg::Options::=\"--force-confnew\" -y" \
-	--updates false \
-	--backports false \
+	--updates true \
+	--backports true \
 	--source false \
 	--firmware-binary true \
 	--firmware-chroot true \
