@@ -23,6 +23,7 @@ vim
 zsh
 zsh-autosuggestions
 zsh-syntax-highlighting
+htop
 
 
 # NOTE: We would like to provide lingmo-linux-large in our installer images
