@@ -46,10 +46,11 @@ done
 # apt autoremove -y | true
 # apt update | true
 
-# Install OnlyOffice
-get_arch=$(arch)
+get_arch=$(uname -m)
 if [[ $get_arch =~ "x86_64" ]];then
+    dpkg --add-architecture i386
     apt update
+    # Install OnlyOffice
     curl -o onlyoffice.deb https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
     apt install -y --no-install-recommends ./onlyoffice.deb
     rm -rfv ./onlyoffice.deb
