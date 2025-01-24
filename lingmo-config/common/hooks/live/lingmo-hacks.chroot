@@ -53,8 +53,11 @@ if [[ $get_arch =~ "x86_64" ]];then
     # Install OnlyOffice
     curl -o onlyoffice.deb https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
     apt install -y --no-install-recommends ./onlyoffice.deb
-    rm -rfv ./onlyoffice.deb
+    rm -fv ./onlyoffice.deb
 fi
+
+# remove package list cache
+rm -rv /var/cache/apt/
 
 # Fixing os-release
 bash -c "cd /etc && rm -rf os-release && ln -s ../usr/lib/os-release os-release"
