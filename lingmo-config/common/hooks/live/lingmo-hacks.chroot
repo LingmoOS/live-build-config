@@ -57,7 +57,7 @@ if [[ $get_arch =~ "x86_64" ]];then
 fi
 
 # remove package list cache
-rm -rv /var/cache/apt/
+apt clean
 
 # Fixing os-release
 bash -c "cd /etc && rm -rf os-release && ln -s ../usr/lib/os-release os-release"
