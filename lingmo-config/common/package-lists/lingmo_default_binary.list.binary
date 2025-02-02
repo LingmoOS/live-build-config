@@ -11,6 +11,7 @@ efibootmgr
 #if ARCHITECTURES amd64
 grub-efi
 grub-efi-amd64
+grub-efi-ia32
 shim-helpers-amd64-signed
 shim-signed
 efibootmgr
