@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Handle systems where /lib is not merged in /usr/lib
 if [ ! -h /lib ]; then
@@ -28,16 +28,36 @@ fi
 # the live system
 for pkg in $(dpkg-query -W -f'${db:Status-Status} ${binary:Package}\n' 'linux-image-*' 'linux-headers-*' 'linux-kbuild-*' | sed -ne 's/^installed //p')
 do
-    apt-mark hold $pkg
+    apt-mark hold $pkg | true
 done
 
+# Mark lingmo DE as manually installed
+for pkg in $(dpkg-query -W -f'${db:Status-Status} ${binary:Package}\n' 'lingmo*'| sed -ne 's/^installed //p')
+do
+    apt-mark manual $pkg | true
+done
 
 # Remove unwanted packages 
-apt remove systemsettings -y
-apt remove plasma-desktop -y
-apt remove network-manager-gnome konsole kde-baseapps -y
-apt remove zutty -y
-apt remove breeze eog -y
-apt autoremove -y
-apt update
+# apt remove systemsettings -y | true
+# apt remove plasma-desktop -y | true
+# apt remove network-manager-gnome konsole kde-baseapps -y | true
+# apt remove zutty -y | true
+# apt remove breeze eog -y | true
+# apt autoremove -y | true
+# apt update | true
 
+get_arch=$(uname -m)
+if [[ $get_arch =~ "x86_64" ]];then
+    dpkg --add-architecture i386
+    apt update
+    # Install OnlyOffice
+    curl -o onlyoffice.deb https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
+    apt install -y --no-install-recommends ./onlyoffice.deb
+    rm -fv ./onlyoffice.deb
+fi
+
+# remove package list cache
+apt clean
+
+# Fixing os-release
+bash -c "cd /etc && rm -rf os-release && ln -s ../usr/lib/os-release os-release"
