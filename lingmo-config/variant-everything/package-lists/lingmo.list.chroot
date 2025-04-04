@@ -7,24 +7,8 @@
 # You can customize the set of Lingmo metapackages (groups of tools) to install
 # For the complete list see: https://tools.lingmo.org/lingmo-metapackages
 
-## linux-firmware
-#if ARCHITECTURES i386 amd64
-bluez-firmware
-firmware-amd-graphics
-firmware-ath9k-htc
-firmware-atheros
-firmware-brcm80211
-firmware-intel-sound
-firmware-iwlwifi
-firmware-libertas
-firmware-linux
-firmware-misc-nonfree
-# firmware-realtek
-firmware-sof-signed
-firmware-ti-connectivity
-firmware-zd1211
-broadcom-sta-dkms
-#endif
+# Core Packages
+lingmo-base-files
 
 ## linux-core
 ### system-core
@@ -39,6 +23,7 @@ vim
 zsh
 zsh-autosuggestions
 zsh-syntax-highlighting
+htop
 
 
 # NOTE: We would like to provide lingmo-linux-large in our installer images
@@ -47,7 +32,6 @@ zsh-syntax-highlighting
 # lingmo-linux-large
 
 # Graphical desktops
-kde-plasma-desktop
 lingmo-workspace-base
 lingmo-plymouth
 sddm
@@ -70,9 +54,12 @@ plymouth
 
 # Lingmo applications
 firefox-esr
-
-# From our friend GXDE
-gxde-deb-installer
+firefox-esr-l10n-zh-cn
+lingmo-screenshot
 
 # Input Methods
+fcitx5
 fcitx5-chinese-addons
+
+# CJK Fonts
+fonts-noto-cjk

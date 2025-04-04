@@ -35,3 +35,4 @@ simple-cdd/profiles/lingmo.downloads
 .lock
 .stage
 prepare.log
+.vscode/settings.json
