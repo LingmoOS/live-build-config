@@ -10,8 +10,6 @@
 # Core Packages
 # lingmo-base-files
 
-## linux-core
-### system-core
 ftp
 openssh-client
 openssh-server
@@ -25,12 +23,6 @@ zsh-autosuggestions
 zsh-syntax-highlighting
 htop
 
-
-# NOTE: We would like to provide lingmo-linux-large in our installer images
-# but we end up with ISO images that are too big for our CDN. So disable
-# it for now.
-# lingmo-linux-large
-
 # Graphical desktops
 # lingmo-workspace-base
 # lingmo-plymouth
@@ -41,6 +33,7 @@ lingmo-filemanager
 lingmo-settings
 lingmo-statusbar
 lingmo-wallpapers
+lingmo-dock
 sddm
 xorg
 kwin-x11
