@@ -8,7 +8,7 @@
 # For the complete list see: https://tools.lingmo.org/lingmo-metapackages
 
 # Core Packages
-lingmo-base-files
+# lingmo-base-files
 
 ## linux-core
 ### system-core
@@ -40,7 +40,7 @@ lingmo-core
 lingmo-filemanager
 lingmo-settings
 lingmo-statusbar
-lingmo-wallpaper
+lingmo-wallpapers
 sddm
 xorg
 kwin-x11
@@ -62,7 +62,7 @@ plymouth
 # Lingmo applications
 firefox-esr
 firefox-esr-l10n-zh-cn
-lingmo-screenshot
+# lingmo-screenshot
 
 # Input Methods
 fcitx5
