@@ -32,16 +32,23 @@ htop
 # lingmo-linux-large
 
 # Graphical desktops
-lingmo-workspace-base
-lingmo-plymouth
+# lingmo-workspace-base
+# lingmo-plymouth
+lingmoui3
+liblingmo
+lingmo-core
+lingmo-filemanager
+lingmo-settings
+lingmo-statusbar
+lingmo-wallpaper
 sddm
 xorg
 kwin-x11
 
 # Live configs
 live-boot
-lingmo-grub-config
-lingmo-live
+# lingmo-grub-config
+# lingmo-live
 gparted
 dirmngr
 kwin-x11
