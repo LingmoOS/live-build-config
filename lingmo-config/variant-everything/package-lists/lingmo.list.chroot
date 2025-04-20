@@ -34,6 +34,11 @@ lingmo-settings
 lingmo-statusbar
 lingmo-wallpapers
 lingmo-dock
+lingmo-launcher
+lingmo-systemicons
+lingmo-kwin-plugins
+
+konsole
 sddm
 xorg
 kwin-x11
@@ -55,7 +60,6 @@ plymouth
 # Lingmo applications
 firefox-esr
 firefox-esr-l10n-zh-cn
-# lingmo-screenshot
 
 # Input Methods
 fcitx5
